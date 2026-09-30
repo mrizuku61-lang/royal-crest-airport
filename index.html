@@ -1,0 +1,3217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070707">
+<meta name="description" content="Royal Crest International Airport - premium passenger airport website">
+<title>Royal Crest International Airport</title>
+
+<style>
+/* =========================================================
+   ROYAL CREST INTERNATIONAL AIRPORT
+   Complete front-end demo website
+   ========================================================= */
+
+:root{
+    --black:#070707;
+    --black2:#111111;
+    --black3:#191919;
+    --gold:#d4af37;
+    --gold2:#f1d477;
+    --white:#ffffff;
+    --muted:#b9b9b9;
+    --line:rgba(212,175,55,.28);
+    --success:#36d98b;
+    --warning:#ffd166;
+    --danger:#ff6262;
+    --shadow:0 18px 50px rgba(0,0,0,.35);
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#0a0a0a;
+    color:var(--white);
+    line-height:1.6;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+.section{
+    padding:85px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:clamp(28px,5vw,46px);
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:var(--muted);
+    max-width:700px;
+    margin:auto;
+}
+
+.gold{
+    color:var(--gold2);
+}
+
+.card{
+    background:linear-gradient(145deg,#151515,#0d0d0d);
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(5,5,5,.96);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(12px);
+}
+
+.navbar{
+    min-height:72px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.menu-toggle{
+    display:none;
+    width:44px;
+    height:44px;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
+    border:1px solid var(--line);
+    border-radius:9px;
+    background:#111;
+    color:var(--gold2);
+    padding:0;
+}
+
+.menu-toggle span{
+    width:20px;
+    height:2px;
+    background:var(--gold2);
+    border-radius:2px;
+    transition:.2s;
+}
+
+.menu-toggle.active span:nth-child(1){
+    transform:translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2){
+    opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+    transform:translateY(-7px) rotate(-45deg);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.logo-mark{
+    width:44px;
+    height:44px;
+    border:2px solid var(--gold);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    color:var(--gold2);
+    font-size:20px;
+}
+
+.logo-text span{
+    display:block;
+}
+
+.logo-main{
+    font-size:15px;
+}
+
+.logo-sub{
+    color:var(--gold2);
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.nav-links a{
+    padding:9px 11px;
+    border-radius:8px;
+    color:#ddd;
+    font-size:14px;
+    transition:.2s;
+}
+
+.nav-links a:hover{
+    background:#1c1c1c;
+    color:var(--gold2);
+}
+
+.hero{
+    min-height:680px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    background:
+        linear-gradient(90deg,rgba(0,0,0,.86),rgba(0,0,0,.50),rgba(0,0,0,.68)),
+        url("airport.jpg") center/cover no-repeat;
+}
+
+.hero-content{
+    max-width:760px;
+    padding:100px 0;
+}
+
+.hero-kicker{
+    color:var(--gold2);
+    font-weight:bold;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:clamp(42px,8vw,78px);
+    line-height:1.02;
+    margin-bottom:22px;
+}
+
+.hero p{
+    color:#e5e5e5;
+    font-size:18px;
+    max-width:650px;
+    margin-bottom:30px;
+}
+
+.btn-row{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:1px solid var(--gold);
+    background:var(--gold);
+    color:#080808;
+    padding:13px 19px;
+    border-radius:10px;
+    font-weight:800;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    background:var(--gold2);
+}
+
+.btn.secondary{
+    background:transparent;
+    color:var(--gold2);
+}
+
+.btn.danger{
+    border-color:var(--danger);
+    background:transparent;
+    color:#ff9696;
+}
+
+.notice{
+    margin-top:18px;
+    padding:14px 16px;
+    border-left:3px solid var(--gold);
+    background:rgba(212,175,55,.08);
+    color:#ddd;
+    border-radius:8px;
+}
+
+.grid{
+    display:grid;
+    gap:22px;
+}
+
+.grid-2{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+}
+
+.grid-3{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+.grid-4{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+}
+
+
+
+
+
+/* ---------- Final dashboard + visual polish ---------- */
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:1fr 1.5fr 1.1fr;
+    gap:18px;
+}
+
+.dashboard-profile,
+.dashboard-card{
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:linear-gradient(145deg,#111,#080808);
+    padding:24px;
+    box-shadow:var(--shadow);
+}
+
+.dashboard-profile{
+    text-align:center;
+}
+
+.profile-avatar{
+    width:76px;
+    height:76px;
+    margin:0 auto 15px;
+    display:grid;
+    place-items:center;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    background:#151208;
+    color:var(--gold2);
+    font-size:25px;
+    font-weight:950;
+}
+
+.dashboard-profile h3{
+    margin:7px 0 5px;
+    font-size:22px;
+}
+
+.dashboard-profile p{
+    margin:0;
+    color:#888;
+    font-size:12px;
+    word-break:break-word;
+}
+
+.profile-badges{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:18px;
+}
+
+.profile-badges span{
+    padding:6px 9px;
+    border:1px solid #2b4e32;
+    border-radius:999px;
+    background:#0d180f;
+    color:#8ed89a;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:.8px;
+}
+
+.dash-card-title{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin-bottom:20px;
+    color:var(--gold2);
+}
+
+.dash-card-title strong{
+    color:#eee;
+}
+
+.dash-flight{
+    display:grid;
+    grid-template-columns:1fr 1.5fr 1fr;
+    gap:10px;
+    padding:15px;
+    border:1px solid #242424;
+    border-radius:10px;
+    background:#0b0b0b;
+    margin-bottom:13px;
+}
+
+.dash-flight small{
+    display:block;
+    color:#777;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.dash-flight strong{
+    display:block;
+    margin-top:5px;
+    color:#eee;
+    font-size:13px;
+}
+
+.dash-info-row{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:10px 0;
+    border-bottom:1px solid #1d1d1d;
+    font-size:11px;
+}
+
+.dash-info-row:last-child{
+    border-bottom:none;
+}
+
+.dash-info-row span{
+    color:#777;
+}
+
+.dash-info-row strong{
+    color:#ddd;
+    text-align:right;
+}
+
+.dash-status{
+    color:#8be29b !important;
+}
+
+.payment-dashboard-status{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:12px;
+    margin-bottom:10px;
+    border:1px solid #2a3e2e;
+    border-radius:9px;
+    background:#0d140f;
+    color:#aaa;
+    font-size:11px;
+}
+
+.dash-status-dot{
+    width:8px;
+    height:8px;
+    flex:0 0 auto;
+    border-radius:50%;
+    background:#777;
+}
+
+.payment-dashboard-status.paid{
+    border-color:#315e39;
+    color:#8be29b;
+}
+
+.payment-dashboard-status.paid .dash-status-dot{
+    background:#73d687;
+    box-shadow:0 0 9px rgba(115,214,135,.6);
+}
+
+.dashboard-actions{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:18px;
+}
+
+.dash-action{
+    padding:14px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:#0b0b0b;
+    color:#ccc;
+    text-align:center;
+    font-size:11px;
+    font-weight:850;
+    text-decoration:none;
+    transition:.2s ease;
+}
+
+.dash-action:hover{
+    border-color:var(--gold);
+    color:var(--gold2);
+    transform:translateY(-2px);
+}
+
+.dashboard-logout{
+    min-width:90px;
+}
+
+/* Consistent interactive polish */
+button,
+.btn,
+input,
+select{
+    transition:border-color .2s ease,background .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+
+button:hover,
+.btn:hover{
+    transform:translateY(-1px);
+}
+
+section{
+    scroll-margin-top:88px;
+}
+
+@media(max-width:1000px){
+    .dashboard-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .dashboard-profile{
+        grid-column:1 / -1;
+    }
+}
+
+@media(max-width:700px){
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+
+    .dashboard-profile{
+        grid-column:auto;
+    }
+
+    .dashboard-actions{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .dash-flight{
+        grid-template-columns:1fr;
+    }
+}
+
+/* ---------- Professional payment center ---------- */
+.payment-lock{
+    padding:10px 14px;
+    border:1px solid var(--line);
+    border-radius:9px;
+    color:#aaa;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.payment-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+
+.payment-card{
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:linear-gradient(145deg,#111,#080808);
+    padding:24px;
+    box-shadow:var(--shadow);
+}
+
+.payment-card-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.payment-card-head h3{
+    margin:5px 0 0;
+    font-size:22px;
+}
+
+.payment-label{
+    color:var(--gold2);
+    font-size:10px;
+    font-weight:950;
+    letter-spacing:1.5px;
+}
+
+.bank-logo,
+.payment-check{
+    width:45px;
+    height:45px;
+    display:grid;
+    place-items:center;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    color:var(--gold2);
+    font-size:20px;
+    font-weight:950;
+}
+
+.bank-detail{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    padding:15px 0;
+    border-bottom:1px solid #202020;
+}
+
+.bank-detail span{
+    color:#777;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.bank-detail strong{
+    color:#f1f1f1;
+    font-size:15px;
+}
+
+.account-number-row{
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.copy-account-btn{
+    border:1px solid var(--gold);
+    border-radius:7px;
+    background:#151208;
+    color:var(--gold2);
+    padding:9px 12px;
+    font-size:10px;
+    font-weight:950;
+    cursor:pointer;
+}
+
+.copy-account-btn:hover{
+    background:#211b09;
+}
+
+.payment-warning{
+    margin-top:18px;
+    padding:13px;
+    border-left:3px solid var(--gold);
+    border-radius:6px;
+    background:#141108;
+    color:#999;
+    font-size:11px;
+    line-height:1.6;
+}
+
+.payment-warning strong{
+    color:var(--gold2);
+}
+
+.confirmation-card form{
+    display:grid;
+    gap:9px;
+}
+
+.confirmation-card label{
+    margin-top:4px;
+    color:#aaa;
+    font-size:11px;
+    font-weight:800;
+}
+
+.confirmation-card input,
+.confirmation-card select{
+    width:100%;
+    box-sizing:border-box;
+    border:1px solid #292929;
+    border-radius:9px;
+    background:#0b0b0b;
+    color:#eee;
+    padding:13px 14px;
+    outline:none;
+}
+
+.confirmation-card input:focus,
+.confirmation-card select:focus{
+    border-color:var(--gold);
+}
+
+.payment-submit-btn{
+    width:100%;
+    margin-top:10px;
+}
+
+.payment-status{
+    margin-top:15px;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #285331;
+    background:#0e1c12;
+    color:#91d89e;
+    font-size:12px;
+    font-weight:800;
+}
+
+.payment-receipt{
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    align-items:center;
+    gap:18px;
+    margin-top:20px;
+    padding:20px;
+    border:1px solid #315e39;
+    border-radius:14px;
+    background:linear-gradient(135deg,#0c1710,#090b09);
+}
+
+.receipt-icon{
+    width:48px;
+    height:48px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:#16341d;
+    color:#8be29b;
+    font-size:22px;
+    font-weight:950;
+}
+
+.payment-receipt h3{
+    margin:5px 0;
+}
+
+.payment-receipt p{
+    margin:0;
+    color:#888;
+    font-size:12px;
+}
+
+.receipt-ref{
+    text-align:right;
+}
+
+.receipt-ref span{
+    display:block;
+    color:#777;
+    font-size:9px;
+    letter-spacing:1px;
+}
+
+.receipt-ref strong{
+    color:var(--gold2);
+    font-family:monospace;
+    font-size:12px;
+}
+
+@media(max-width:800px){
+    .payment-layout{
+        grid-template-columns:1fr;
+    }
+
+    .payment-receipt{
+        grid-template-columns:auto 1fr;
+    }
+
+    .receipt-ref{
+        grid-column:1 / -1;
+        text-align:left;
+        padding-top:12px;
+        border-top:1px solid #263c2a;
+    }
+}
+
+/* ---------- Professional boarding pass ---------- */
+.boarding-pass{
+    position:relative;
+    overflow:hidden;
+    margin-top:22px;
+    border:1px solid var(--gold);
+    border-radius:18px;
+    background:linear-gradient(135deg,#111 0%,#070707 55%,#14110a 100%);
+    box-shadow:0 18px 45px rgba(0,0,0,.35);
+}
+
+.boarding-pass::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.035) 50%,transparent 70%);
+}
+
+.bp-main{
+    display:grid;
+    grid-template-columns:1.55fr .7fr;
+    min-height:300px;
+}
+
+.bp-left{
+    padding:28px;
+}
+
+.bp-right{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:24px;
+    border-left:2px dashed #6d5a20;
+    background:rgba(0,0,0,.22);
+}
+
+.bp-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:25px;
+}
+
+.bp-crown{
+    font-size:30px;
+}
+
+.bp-airline{
+    color:var(--gold2);
+    font-size:18px;
+    font-weight:950;
+    letter-spacing:2px;
+}
+
+.bp-subtitle{
+    color:#8d8d8d;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.bp-route{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:18px;
+    align-items:center;
+    margin:20px 0 28px;
+}
+
+.bp-airport{
+    color:#fff;
+    font-size:30px;
+    font-weight:950;
+    letter-spacing:1px;
+}
+
+.bp-city{
+    color:#888;
+    font-size:12px;
+    margin-top:4px;
+}
+
+.bp-arrow{
+    color:var(--gold2);
+    font-size:27px;
+}
+
+.bp-details{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+
+.bp-detail{
+    padding:12px;
+    border:1px solid #242424;
+    border-radius:10px;
+    background:#0b0b0b;
+}
+
+.bp-label{
+    color:#777;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+}
+
+.bp-value{
+    margin-top:5px;
+    color:#eee;
+    font-size:14px;
+    font-weight:850;
+}
+
+.bp-passenger{
+    margin-top:18px;
+    padding-top:16px;
+    border-top:1px solid #252525;
+}
+
+.bp-passenger-name{
+    color:#fff;
+    font-size:20px;
+    font-weight:900;
+}
+
+.bp-passenger-label{
+    color:#777;
+    font-size:9px;
+    letter-spacing:1px;
+    margin-bottom:5px;
+}
+
+.bp-seat{
+    color:var(--gold2);
+    font-size:12px;
+    margin-top:4px;
+}
+
+.bp-barcode{
+    width:135px;
+    height:85px;
+    display:flex;
+    align-items:stretch;
+    justify-content:center;
+    gap:2px;
+    margin:15px 0;
+    padding:5px;
+    background:#fff;
+    border-radius:5px;
+    overflow:hidden;
+}
+
+.bp-barcode i{
+    display:block;
+    height:100%;
+    background:#111;
+}
+
+.bp-number{
+    color:#aaa;
+    font-family:monospace;
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-align:center;
+}
+
+.bp-scan{
+    color:#777;
+    font-size:9px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-top:7px;
+}
+
+.bp-cutline{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:0 24px;
+    color:#555;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.bp-cutline::before,
+.bp-cutline::after{
+    content:"";
+    height:1px;
+    flex:1;
+    border-top:1px dashed #4d4d4d;
+}
+
+@media(max-width:700px){
+    .bp-main{
+        grid-template-columns:1fr;
+    }
+
+    .bp-right{
+        border-left:none;
+        border-top:2px dashed #6d5a20;
+    }
+
+    .bp-details{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .bp-route{
+        gap:10px;
+    }
+
+    .bp-airport{
+        font-size:25px;
+    }
+}
+
+/* ---------- Professional airport flight board ---------- */
+.flight-board-controls{display:flex;gap:10px;margin:22px 0 14px;flex-wrap:wrap}
+.board-tab{border:1px solid var(--line);background:#0c0c0c;color:#ddd;padding:11px 18px;border-radius:8px;cursor:pointer;font-weight:800;letter-spacing:.3px}
+.board-tab:hover,.board-tab.active{border-color:var(--gold);color:var(--gold2);background:#14110a}
+.board-clock{min-width:150px;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:#0a0a0a;color:var(--gold2);font-family:monospace;font-size:18px;font-weight:800;text-align:center}
+.airport-board{overflow:hidden;border:1px solid var(--line);border-radius:14px;background:#050505;box-shadow:var(--shadow)}
+.board-heading,.board-row{display:grid;grid-template-columns:1fr 2fr 1fr 1fr 1.35fr;align-items:center;gap:14px;padding:17px 20px}
+.board-heading{background:linear-gradient(90deg,#151515,#0a0a0a);border-bottom:1px solid var(--line);color:#999;font-size:12px;font-weight:900;letter-spacing:1.3px}
+.board-row{min-height:66px;border-bottom:1px solid #171717;color:#e7e7e7;font-size:15px}
+.board-row:last-child{border-bottom:none}
+.board-row:hover{background:#0d0d0d}
+.board-row strong{color:var(--gold2);font-size:16px;letter-spacing:.5px}
+.status-pill{display:inline-flex;width:max-content;min-width:86px;justify-content:center;padding:6px 9px;border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.8px}
+.status-pill.on-time{background:#102014;color:#8be29b;border:1px solid #244d2b}
+.status-pill.boarding{background:#211b09;color:#f0ca69;border:1px solid #67521d}
+.status-pill.departed,.status-pill.landed{background:#101b25;color:#82bce9;border:1px solid #234a68}
+.status-pill.delayed{background:#24120f;color:#ee9b86;border:1px solid #673026}
+.hidden-board{display:none}
+.board-note{display:flex;align-items:center;gap:9px;margin-top:12px;color:#888;font-size:12px}
+.board-note #boardUpdated{margin-left:auto}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#73d687;box-shadow:0 0 10px rgba(115,214,135,.7)}
+@media(max-width:900px){
+    .grid-4,
+    .grid-3{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .menu-toggle{
+        display:flex;
+    }
+
+    .nav-links{
+        position:absolute;
+        top:72px;
+        left:4%;
+        right:4%;
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+        gap:4px;
+        padding:12px;
+        background:rgba(8,8,8,.98);
+        border:1px solid var(--line);
+        border-radius:12px;
+        box-shadow:var(--shadow);
+        opacity:0;
+        visibility:hidden;
+        transform:translateY(-10px);
+        pointer-events:none;
+        transition:.22s ease;
+    }
+
+    .nav-links.open{
+        opacity:1;
+        visibility:visible;
+        transform:translateY(0);
+        pointer-events:auto;
+    }
+
+    .nav-links a{
+        display:block;
+        padding:13px 14px;
+        border-radius:8px;
+    }
+
+    .section-title{gap:14px}
+    .board-clock{min-width:130px;font-size:15px}
+    .airport-board{overflow-x:auto}
+    .board-heading,.board-row{min-width:690px}
+    .board-note{align-items:flex-start;flex-wrap:wrap}
+    .board-note #boardUpdated{margin-left:0;width:100%}
+}
+
+@media(max-width:650px){
+    .section{
+        padding:60px 0;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        min-height:620px;
+    }
+}
+
+.form-card{
+    padding:25px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:17px;
+}
+
+@media(max-width:650px){
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.field.full{
+    grid-column:1/-1;
+}
+
+.field label{
+    font-size:13px;
+    color:#ddd;
+    font-weight:bold;
+}
+
+.field input,
+.field select{
+    width:100%;
+    padding:13px 14px;
+    border-radius:9px;
+    border:1px solid #333;
+    outline:none;
+    color:#fff;
+    background:#0b0b0b;
+}
+
+.field input:focus,
+.field select:focus{
+    border-color:var(--gold);
+}
+
+.small{
+    font-size:12px;
+    color:#999;
+}
+
+.result{
+    margin-top:18px;
+    padding:15px;
+    border-radius:10px;
+    display:none;
+    border:1px solid var(--line);
+    background:#111;
+}
+
+.result.show{
+    display:block;
+}
+
+.status{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:999px;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.status.ontime{
+    background:rgba(54,217,139,.12);
+    color:var(--success);
+}
+
+.status.boarding{
+    background:rgba(255,209,102,.12);
+    color:var(--warning);
+}
+
+.status.departed{
+    background:rgba(150,150,150,.15);
+    color:#ccc;
+}
+
+.status.landed{
+    background:rgba(212,175,55,.13);
+    color:var(--gold2);
+}
+
+.status.pending{
+    background:rgba(255,209,102,.12);
+    color:var(--warning);
+}
+
+.status.paid{
+    background:rgba(54,217,139,.12);
+    color:var(--success);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:700px;
+}
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+th,
+td{
+    padding:15px 13px;
+    text-align:left;
+    border-bottom:1px solid #282828;
+}
+
+th{
+    color:var(--gold2);
+    font-size:13px;
+}
+
+td{
+    color:#ddd;
+    font-size:14px;
+}
+
+.flight-card{
+    padding:22px;
+}
+
+.flight-number{
+    font-size:28px;
+    font-weight:900;
+    color:var(--gold2);
+}
+
+.flight-route{
+    margin:10px 0;
+    font-size:18px;
+}
+
+.info-card{
+    padding:24px;
+    min-height:170px;
+}
+
+.info-icon{
+    font-size:32px;
+    margin-bottom:13px;
+}
+
+.info-card h3{
+    margin-bottom:8px;
+}
+
+.info-card p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:20px;
+}
+
+.tab-btn{
+    flex:1;
+    padding:12px;
+    border-radius:9px;
+    border:1px solid #333;
+    background:#111;
+    color:#ddd;
+    font-weight:bold;
+}
+
+.tab-btn.active{
+    border-color:var(--gold);
+    background:rgba(212,175,55,.1);
+    color:var(--gold2);
+}
+
+.auth-panel{
+    display:none;
+}
+
+.auth-panel.active{
+    display:block;
+}
+
+.dashboard{
+    display:none;
+}
+
+.dashboard.active{
+    display:block;
+}
+
+.dashboard-head{
+    padding:28px;
+    margin-bottom:20px;
+}
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:15px;
+}
+
+@media(max-width:800px){
+    .dashboard-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+}
+
+@media(max-width:500px){
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+.stat{
+    padding:18px;
+    border:1px solid #292929;
+    border-radius:12px;
+    background:#0c0c0c;
+}
+
+.stat small{
+    color:#999;
+    display:block;
+    margin-bottom:4px;
+}
+
+.stat strong{
+    color:var(--gold2);
+    font-size:18px;
+}
+
+.boarding-pass{
+    display:none;
+    margin-top:22px;
+    overflow:hidden;
+    border:1px solid var(--gold);
+    border-radius:18px;
+    background:linear-gradient(135deg,#171717,#090909);
+}
+
+.boarding-pass.show{
+    display:block;
+}
+
+.bp-top{
+    padding:22px;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    border-bottom:1px dashed #555;
+}
+
+.bp-brand{
+    color:var(--gold2);
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.bp-number{
+    color:#aaa;
+    font-size:12px;
+}
+
+.bp-body{
+    padding:25px;
+}
+
+.bp-route{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:24px;
+}
+
+.bp-airport{
+    font-size:30px;
+    font-weight:900;
+}
+
+.bp-arrow{
+    color:var(--gold2);
+    font-size:28px;
+}
+
+.bp-meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+@media(max-width:650px){
+    .bp-meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+.bp-meta div{
+    padding:13px;
+    background:#111;
+    border-radius:9px;
+}
+
+.bp-meta small{
+    color:#888;
+    display:block;
+}
+
+.bp-meta strong{
+    color:#eee;
+}
+
+.payment-card{
+    padding:28px;
+}
+
+.bank-box{
+    padding:20px;
+    background:#080808;
+    border:1px solid var(--gold);
+    border-radius:14px;
+    margin:18px 0;
+}
+
+.bank-row{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:12px 0;
+    border-bottom:1px solid #242424;
+}
+
+.bank-row:last-child{
+    border-bottom:none;
+}
+
+.bank-row span:first-child{
+    color:#999;
+}
+
+.bank-row strong{
+    color:#fff;
+    text-align:right;
+}
+
+.account-number{
+    font-size:24px;
+    color:var(--gold2)!important;
+    letter-spacing:2px;
+}
+
+.copy-btn{
+    margin-top:12px;
+}
+
+.owner-card{
+    padding:30px;
+    text-align:center;
+}
+
+.owner-avatar{
+    width:90px;
+    height:90px;
+    margin:0 auto 18px;
+    border-radius:50%;
+    border:2px solid var(--gold);
+    display:grid;
+    place-items:center;
+    font-size:34px;
+    color:var(--gold2);
+}
+
+.country{
+    padding:20px;
+}
+
+.country h3{
+    margin-bottom:10px;
+}
+
+.country p{
+    color:#bbb;
+}
+
+footer{
+    padding:45px 0 25px;
+    background:#050505;
+    border-top:1px solid var(--line);
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:30px;
+}
+
+@media(max-width:700px){
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+.footer-title{
+    color:var(--gold2);
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.footer-links{
+    display:grid;
+    gap:7px;
+    color:#aaa;
+    font-size:14px;
+}
+
+.copyright{
+    margin-top:35px;
+    padding-top:18px;
+    border-top:1px solid #222;
+    text-align:center;
+    color:#777;
+    font-size:12px;
+}
+
+.toast{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    z-index:3000;
+    max-width:340px;
+    padding:15px 17px;
+    background:#151515;
+    border:1px solid var(--gold);
+    border-radius:10px;
+    color:#fff;
+    box-shadow:var(--shadow);
+    transform:translateY(120px);
+    opacity:0;
+    transition:.25s;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.divider{
+    height:1px;
+    background:#222;
+    margin:25px 0;
+}
+
+.center{
+    text-align:center;
+}
+
+.mt{
+    margin-top:20px;
+}
+
+.mb{
+    margin-bottom:20px;
+}
+
+.highlight{
+    color:var(--gold2);
+    font-weight:bold;
+}
+
+.warning-box{
+    padding:15px;
+    border-radius:10px;
+    background:rgba(255,209,102,.08);
+    border:1px solid rgba(255,209,102,.25);
+    color:#ddd;
+    font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container navbar">
+        <a class="logo" href="#home">
+            <div class="logo-mark">RC</div>
+            <div class="logo-text">
+                <span class="logo-main">ROYAL CREST</span>
+                <span class="logo-sub">INTERNATIONAL AIRPORT</span>
+            </div>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-links" id="mainNav">
+            <a href="#home">Home</a>
+            <a href="#flights">Flights</a>
+            <a href="#book">Book</a>
+            <a href="#arrivals">Arrivals</a>
+            <a href="#airport-info">Airport Info</a>
+            <a href="#payment">Payment</a>
+            <a href="#contact">Contact</a>
+            <a href="#login">🔐 Login</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<!-- =========================================================
+     HOME
+     ========================================================= -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-kicker">Welcome to Royal Crest</div>
+            <h1>Travel Beyond <span class="gold">Expectations.</span></h1>
+            <p>
+                Experience premium airport services, modern terminals,
+                reliable flight information and a seamless passenger journey
+                at Royal Crest International Airport.
+            </p>
+
+            <div class="btn-row">
+                <a class="btn" href="#book">Book a Flight</a>
+                <a class="btn secondary" href="#flights">Check Flights</a>
+            </div>
+
+            <div class="notice">
+                <strong>Royal Crest International Airport</strong><br>
+                A fictional airport website demonstration. All bookings,
+                flights and payment records on this page are demo data.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     QUICK SERVICES
+     ========================================================= -->
+<section class="section" id="services">
+    <div class="container">
+        <div class="section-title">
+            <h2>Airport <span class="gold">Services</span></h2>
+            <p>Everything a passenger needs before, during and after a journey.</p>
+        </div>
+
+        <div class="grid grid-4">
+            <div class="card info-card">
+                <div class="info-icon">✈️</div>
+                <h3>Flight Information</h3>
+                <p>Check fictional Royal Crest flight schedules and statuses.</p>
+            </div>
+
+            <div class="card info-card">
+                <div class="info-icon">🎫</div>
+                <h3>Online Booking</h3>
+                <p>Create a demo booking and generate a boarding pass.</p>
+            </div>
+
+            <div class="card info-card">
+                <div class="info-icon">🧳</div>
+                <h3>Baggage</h3>
+                <p>Passenger baggage and assistance services are available.</p>
+            </div>
+
+            <div class="card info-card">
+                <div class="info-icon">🛋️</div>
+                <h3>Premium Lounge</h3>
+                <p>Relax in the Royal Crest passenger lounge before departure.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     FLIGHT SEARCH
+     ========================================================= -->
+<section class="section" id="flights">
+    <div class="container">
+        <div class="section-title">
+            <h2>Search <span class="gold">Flights</span></h2>
+            <p>Search the Royal Crest demo flight schedule.</p>
+        </div>
+
+        <div class="card form-card">
+            <form id="flightSearchForm">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="fromCity">From</label>
+                        <input id="fromCity" type="text" placeholder="Departure city" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="toCity">To</label>
+                        <input id="toCity" type="text" placeholder="Destination city" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="flightDate">Date</label>
+                        <input id="flightDate" type="date" required>
+                    </div>
+
+                    <div class="field">
+                        <label>&nbsp;</label>
+                        <button class="btn" type="submit">Search Flights</button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="flightSearchResult" class="result"></div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     FLIGHT STATUS
+     ========================================================= -->
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Flight <span class="gold">Status</span></h2>
+            <p>Sample Royal Crest flight movements.</p>
+        </div>
+
+        <div class="card table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Flight</th>
+                        <th>Destination</th>
+                        <th>Status</th>
+                        <th>Gate</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>RC101</td>
+                        <td>London</td>
+                        <td><span class="status ontime">On Time</span></td>
+                        <td>A12</td>
+                        <td>08:30</td>
+                    </tr>
+                    <tr>
+                        <td>RC205</td>
+                        <td>Dubai</td>
+                        <td><span class="status boarding">Boarding</span></td>
+                        <td>B04</td>
+                        <td>10:15</td>
+                    </tr>
+                    <tr>
+                        <td>RC310</td>
+                        <td>Lagos</td>
+                        <td><span class="status departed">Departed</span></td>
+                        <td>C07</td>
+                        <td>12:45</td>
+                    </tr>
+                    <tr>
+                        <td>RC415</td>
+                        <td>Paris</td>
+                        <td><span class="status ontime">On Time</span></td>
+                        <td>A08</td>
+                        <td>15:20</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     BOOKING
+     ========================================================= -->
+<section class="section" id="book">
+    <div class="container">
+        <div class="section-title">
+            <h2>Book Your <span class="gold">Flight</span></h2>
+            <p>Enter your passenger information to create a demo Royal Crest booking.</p>
+        </div>
+
+        <div class="card form-card">
+            <form id="bookingForm">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="passengerName">Passenger Name</label>
+                        <input id="passengerName" type="text" placeholder="Full name" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="passengerEmail">Email</label>
+                        <input id="passengerEmail" type="email" placeholder="Email address" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="departureCity">Departure City</label>
+                        <input id="departureCity" type="text" placeholder="Example: Lagos" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="destinationCity">Destination</label>
+                        <input id="destinationCity" type="text" placeholder="Example: London" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="travelDate">Travel Date</label>
+                        <input id="travelDate" type="date" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="passengerCount">Passengers</label>
+                        <select id="passengerCount" required>
+                            <option value="">Select</option>
+                            <option value="1">1 Passenger</option>
+                            <option value="2">2 Passengers</option>
+                            <option value="3">3 Passengers</option>
+                            <option value="4">4 Passengers</option>
+                            <option value="5">5 Passengers</option>
+                            <option value="6">6 Passengers</option>
+                        </select>
+                    </div>
+
+                    <div class="field full">
+                        <button class="btn" type="submit">Book Flight & Generate Boarding Pass</button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="bookingResult" class="result"></div>
+
+            <div id="boardingPass" class="boarding-pass" style="display:none;">
+    <div class="bp-main">
+        <div class="bp-left">
+            <div class="bp-brand">
+                <div class="bp-crown">♛</div>
+                <div>
+                    <div class="bp-airline">ROYAL CREST</div>
+                    <div class="bp-subtitle">INTERNATIONAL AIRPORT</div>
+                </div>
+            </div>
+
+            <div class="bp-route">
+                <div>
+                    <div class="bp-airport" id="bpFrom">LOS</div>
+                    <div class="bp-city" id="bpFromCity">Lagos</div>
+                </div>
+                <div class="bp-arrow">✈</div>
+                <div>
+                    <div class="bp-airport" id="bpTo">LHR</div>
+                    <div class="bp-city" id="bpToCity">London</div>
+                </div>
+            </div>
+
+            <div class="bp-details">
+                <div class="bp-detail"><div class="bp-label">Flight</div><div class="bp-value" id="bpFlight">RC000</div></div>
+                <div class="bp-detail"><div class="bp-label">Date</div><div class="bp-value" id="bpDate">--</div></div>
+                <div class="bp-detail"><div class="bp-label">Gate</div><div class="bp-value" id="bpGate">--</div></div>
+                <div class="bp-detail"><div class="bp-label">Passengers</div><div class="bp-value" id="bpPassengers">1</div></div>
+            </div>
+
+            <div class="bp-passenger">
+                <div class="bp-passenger-label">PASSENGER</div>
+                <div class="bp-passenger-name" id="bpPassenger">Passenger Name</div>
+                <div class="bp-seat">SEAT <span id="bpSeat">--</span></div>
+            </div>
+        </div>
+
+        <div class="bp-right">
+            <div class="bp-subtitle">BOARDING PASS</div>
+            <div class="bp-barcode" id="bpBarcode"></div>
+            <div class="bp-number" id="bpNumber">RC-000000000</div>
+            <div class="bp-scan">Scan at boarding gate</div>
+        </div>
+    </div>
+    <div class="bp-cutline">ROYAL CREST</div>
+</div>
+                    <div class="bp-number">
+                        BOARDING PASS<br>
+                        <strong id="bpNumber">RC-000000</strong>
+                    </div>
+                </div>
+
+                <div class="bp-body">
+                    <div class="bp-route">
+                        <div>
+                            <div class="small">FROM</div>
+                            <div class="bp-airport" id="bpFrom">LOS</div>
+                        </div>
+
+                        <div class="bp-arrow">✈</div>
+
+                        <div>
+                            <div class="small">TO</div>
+                            <div class="bp-airport" id="bpTo">LON</div>
+                        </div>
+                    </div>
+
+                    <div class="bp-meta">
+                        <div>
+                            <small>PASSENGER</small>
+                            <strong id="bpPassenger">Passenger</strong>
+                        </div>
+                        <div>
+                            <small>FLIGHT</small>
+                            <strong id="bpFlight">RC000</strong>
+                        </div>
+                        <div>
+                            <small>DATE</small>
+                            <strong id="bpDate">--</strong>
+                        </div>
+                        <div>
+                            <small>PASSENGERS</small>
+                            <strong id="bpPassengers">1</strong>
+                        </div>
+                        <div>
+                            <small>GATE</small>
+                            <strong id="bpGate">A01</strong>
+                        </div>
+                        <div>
+                            <small>SEAT</small>
+                            <strong id="bpSeat">12A</strong>
+                        </div>
+                        <div>
+                            <small>STATUS</small>
+                            <strong>BOOKED</strong>
+                        </div>
+                        <div>
+                            <small>CLASS</small>
+                            <strong>ECONOMY</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     ARRIVALS & DEPARTURES
+     ========================================================= -->
+<section id="arrivals">
+    <div class="container">
+        <div class="section-title">
+            <div>
+                <span class="eyebrow">ROYAL CREST AIRPORT</span>
+                <h2>Flight Information</h2>
+                <p>Departures and arrivals information for Royal Crest International Airport.</p>
+            </div>
+            <div class="board-clock" id="boardClock">--:--:--</div>
+        </div>
+
+        <div class="flight-board-controls">
+            <button class="board-tab active" type="button" data-board="departures">🛫 Departures</button>
+            <button class="board-tab" type="button" data-board="arrivals">🛬 Arrivals</button>
+        </div>
+
+        <div class="airport-board" id="departureBoard">
+            <div class="board-heading">
+                <div>FLIGHT</div><div>DESTINATION</div><div>TIME</div><div>GATE</div><div>STATUS</div>
+            </div>
+            <div class="board-row"><strong>RC101</strong><span>London</span><span>08:30</span><span>A12</span><span class="status-pill on-time">ON TIME</span></div>
+            <div class="board-row"><strong>RC205</strong><span>Dubai</span><span>10:15</span><span>B04</span><span class="status-pill boarding">BOARDING</span></div>
+            <div class="board-row"><strong>RC310</strong><span>Lagos</span><span>12:45</span><span>C07</span><span class="status-pill departed">DEPARTED</span></div>
+            <div class="board-row"><strong>RC415</strong><span>Paris</span><span>15:20</span><span>A08</span><span class="status-pill on-time">ON TIME</span></div>
+            <div class="board-row"><strong>RC522</strong><span>New York</span><span>18:05</span><span>B11</span><span class="status-pill boarding">BOARDING</span></div>
+        </div>
+
+        <div class="airport-board hidden-board" id="arrivalBoard">
+            <div class="board-heading">
+                <div>FLIGHT</div><div>FROM</div><div>TIME</div><div>GATE</div><div>STATUS</div>
+            </div>
+            <div class="board-row"><strong>RC118</strong><span>London</span><span>09:05</span><span>A03</span><span class="status-pill landed">LANDED</span></div>
+            <div class="board-row"><strong>RC224</strong><span>Dubai</span><span>11:40</span><span>B06</span><span class="status-pill on-time">ON TIME</span></div>
+            <div class="board-row"><strong>RC337</strong><span>Accra</span><span>13:25</span><span>C02</span><span class="status-pill boarding">FINAL CALL</span></div>
+            <div class="board-row"><strong>RC449</strong><span>Paris</span><span>16:10</span><span>A05</span><span class="status-pill on-time">ON TIME</span></div>
+            <div class="board-row"><strong>RC560</strong><span>New York</span><span>20:15</span><span>B09</span><span class="status-pill delayed">DELAYED</span></div>
+        </div>
+
+        <div class="board-note">
+            <span class="live-dot"></span>
+            <span>Flight information is a demonstration for the Royal Crest website.</span>
+            <span id="boardUpdated">Updated just now</span>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     AIRPORT INFORMATION
+     ========================================================= -->
+<section class="section" id="airport-info">
+    <div class="container">
+        <div class="section-title">
+            <h2>Airport <span class="gold">Information</span></h2>
+            <p>Helpful information for Royal Crest passengers.</p>
+        </div>
+
+        <div class="grid grid-3">
+            <div class="card info-card">
+                <div class="info-icon">🏢</div>
+                <h3>Terminal 1</h3>
+                <p>Main international departures and check-in facilities.</p>
+            </div>
+
+            <div class="card info-card">
+                <div class="info-icon">🏢</div>
+                <h3>Terminal 2</h3>
+                <p>Regional and selected domestic passenger services.</p>
+            </div>
+
+            <div class="card info-card">
+                <div class="info-icon">🧳</div>
+                <h3>Baggage</h3>
+                <p>Baggage drop, collection and passenger assistance desks.</p>
+            </div>
+
+            <div class="card info-card">
+                <div class="info-icon">🚗</div>
+                <h3>Parking</h3>
+                <p>Passenger parking and pickup areas are available near the terminal.</p>
+            </div>
+
+            <div class="card info-card">
+                <div class="info-icon">🛋️</div>
+                <h3>Lounge</h3>
+                <p>Premium passenger lounge with seating and relaxation areas.</p>
+            </div>
+
+            <div class="card info-card">
+                <div class="info-icon">☎️</div>
+                <h3>Customer Service</h3>
+                <p>Contact Royal Crest customer care for passenger assistance.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     LOGIN / SIGN UP
+     ========================================================= -->
+<section class="section" id="login">
+    <div class="container">
+        <div class="section-title">
+            <h2>Passenger <span class="gold">Account</span></h2>
+            <p>Create an account or sign in to access your demo passenger dashboard.</p>
+        </div>
+
+        <div class="card form-card">
+            <div class="tabs">
+                <button class="tab-btn active" id="signupTab" type="button">Sign Up</button>
+                <button class="tab-btn" id="loginTab" type="button">Login</button>
+            </div>
+
+            <div class="auth-panel active" id="signupPanel">
+                <form id="signupForm">
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="signupName">Full Name</label>
+                            <input id="signupName" type="text" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="signupEmail">Email</label>
+                            <input id="signupEmail" type="email" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="signupPassword">Password</label>
+                            <input id="signupPassword" type="password" minlength="6" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="signupPassword2">Confirm Password</label>
+                            <input id="signupPassword2" type="password" minlength="6" required>
+                        </div>
+
+                        <div class="field full">
+                            <button class="btn" type="submit">Create Passenger Account</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="auth-panel" id="loginPanel">
+                <form id="loginForm">
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="loginEmail">Email</label>
+                            <input id="loginEmail" type="email" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="loginPassword">Password</label>
+                            <input id="loginPassword" type="password" required>
+                        </div>
+
+                        <div class="field full">
+                            <button class="btn" type="submit">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="warning-box mt">
+                Demo notice: this website stores account information in your browser's
+                localStorage. It is not a secure real-world authentication system.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     DASHBOARD
+     ========================================================= -->
+<section id="dashboard" style="display:none;">
+    <div class="container">
+        <div class="section-title">
+            <div>
+                <span class="eyebrow">ROYAL CREST PASSENGER PORTAL</span>
+                <h2>My Dashboard</h2>
+                <p>Manage your passenger profile, booking, boarding pass and payment status.</p>
+            </div>
+            <button type="button" class="btn dashboard-logout" id="dashboardLogoutBtn">Logout</button>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-profile">
+                <div class="profile-avatar" id="dashboardAvatar">RC</div>
+                <span class="payment-label">PASSENGER ACCOUNT</span>
+                <h3 id="dashboardName">Passenger</h3>
+                <p id="dashboardEmail">passenger@example.com</p>
+                <div class="profile-badges">
+                    <span>● ACTIVE</span>
+                    <span>ROYAL PASSENGER</span>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="dash-card-title">
+                    <span>✈</span>
+                    <strong>Latest Booking</strong>
+                </div>
+                <div class="dash-flight">
+                    <div><small>FLIGHT</small><strong id="dashFlight">--</strong></div>
+                    <div><small>ROUTE</small><strong id="dashRoute">-- → --</strong></div>
+                    <div><small>DATE</small><strong id="dashDate">--</strong></div>
+                </div>
+                <div class="dash-info-row"><span>Status</span><strong class="dash-status">CONFIRMED</strong></div>
+                <div class="dash-info-row"><span>Gate / Seat</span><strong id="dashGateSeat">-- / --</strong></div>
+                <div class="dash-info-row"><span>Passengers</span><strong id="dashPassengers">--</strong></div>
+                <div class="dash-info-row"><span>Boarding Pass</span><strong id="dashBoardingPass">--</strong></div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="dash-card-title">
+                    <span>💳</span>
+                    <strong>Payment Status</strong>
+                </div>
+                <div class="payment-dashboard-status" id="dashPaymentStatus">
+                    <span class="dash-status-dot"></span>
+                    <strong>No payment submitted</strong>
+                </div>
+                <div class="dash-info-row"><span>Payment Reference</span><strong id="dashPaymentRef">--</strong></div>
+                <div class="dash-info-row"><span>Amount</span><strong id="dashPaymentAmount">--</strong></div>
+                <div class="dash-info-row"><span>Method</span><strong id="dashPaymentMethod">--</strong></div>
+            </div>
+        </div>
+
+        <div class="dashboard-actions">
+            <a href="#arrivals" class="dash-action">🛫 Flight Board</a>
+            <a href="#book" class="dash-action">🎫 Book Flight</a>
+            <a href="#payment" class="dash-action">💳 Payment</a>
+            <a href="#contact" class="dash-action">☎ Customer Care</a>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     PAYMENT
+     ========================================================= -->
+<section id="payment">
+    <div class="container">
+        <div class="section-title">
+            <div>
+                <span class="eyebrow">ROYAL CREST PAYMENT CENTER</span>
+                <h2>Complete Your Payment</h2>
+                <p>Use the transfer details below to submit your payment confirmation.</p>
+            </div>
+            <div class="payment-lock">🔒 SECURE DEMO</div>
+        </div>
+
+        <div class="payment-layout">
+            <div class="payment-card transfer-card">
+                <div class="payment-card-head">
+                    <div>
+                        <span class="payment-label">BANK TRANSFER</span>
+                        <h3>Royal Crest Transfer Details</h3>
+                    </div>
+                    <div class="bank-logo">P</div>
+                </div>
+
+                <div class="bank-detail">
+                    <span>Bank</span>
+                    <strong>PALMPAY</strong>
+                </div>
+
+                <div class="bank-detail">
+                    <span>Account Name</span>
+                    <strong>FOLASHADE AINA OGUNWO</strong>
+                </div>
+
+                <div class="bank-detail">
+                    <span>Airport</span>
+                    <strong>ROYAL CREST AIRPORT</strong>
+                </div>
+
+                <div class="bank-detail account-number-row">
+                    <div>
+                        <span>Account Number</span>
+                        <strong id="paymentAccountNumber">8100613507</strong>
+                    </div>
+                    <button type="button" class="copy-account-btn" id="copyAccountBtn">COPY</button>
+                </div>
+
+                <div class="payment-warning">
+                    <strong>Important:</strong>
+                    This is a fictional Royal Crest website and these are demonstration
+                    payment details. The website does not independently verify bank transfers.
+                </div>
+            </div>
+
+            <div class="payment-card confirmation-card">
+                <div class="payment-card-head">
+                    <div>
+                        <span class="payment-label">PAYMENT CONFIRMATION</span>
+                        <h3>Submit Transfer</h3>
+                    </div>
+                    <div class="payment-check">✓</div>
+                </div>
+
+                <form id="paymentForm">
+                    <label for="paymentBookingRef">Booking Reference</label>
+                    <input id="paymentBookingRef" type="text" placeholder="e.g. RC-123456789" required>
+
+                    <label for="paymentAmount">Amount</label>
+                    <input id="paymentAmount" type="number" min="0" step="0.01" placeholder="Enter amount" required>
+
+                    <label for="paymentMethod">Payment Method</label>
+                    <select id="paymentMethod" required>
+                        <option value="">Select method</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                        <option value="PALMPAY Transfer">PALMPAY Transfer</option>
+                    </select>
+
+                    <label for="paymentName">Passenger Name</label>
+                    <input id="paymentName" type="text" placeholder="Enter passenger name" required>
+
+                    <button class="btn btn-gold payment-submit-btn" type="submit">
+                        Submit Payment Confirmation
+                    </button>
+                </form>
+
+                <div id="paymentStatus" class="payment-status" style="display:none;"></div>
+            </div>
+        </div>
+
+        <div id="paymentReceipt" class="payment-receipt" style="display:none;">
+            <div class="receipt-icon">✓</div>
+            <div>
+                <span class="payment-label">TRANSFER SUBMITTED</span>
+                <h3>Payment Confirmation Received</h3>
+                <p id="paymentReceiptText">Your payment confirmation has been saved to this browser.</p>
+            </div>
+            <div class="receipt-ref">
+                <span>REFERENCE</span>
+                <strong id="paymentReceiptRef">RC-PAY-000000</strong>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     OWNER
+     ========================================================= -->
+<section class="section" id="owner">
+    <div class="container">
+        <div class="section-title">
+            <h2>Airport <span class="gold">Leadership</span></h2>
+            <p>Management information for the fictional airport.</p>
+        </div>
+
+        <div class="card owner-card">
+            <div class="owner-avatar">VK</div>
+            <h2>Victor Kingsley</h2>
+            <p class="gold">Founder & Chairman</p>
+            <p class="mt" style="color:#aaa">
+                Royal Crest International Airport
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     CUSTOMER CARE
+     ========================================================= -->
+<section class="section" id="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Customer <span class="gold">Care</span></h2>
+            <p>Royal Crest customer-care contact information for the fictional website.</p>
+        </div>
+
+        <div class="grid grid-2">
+            <div class="card country">
+                <h3>🇳🇬 Nigeria</h3>
+                <p>+234 704 891 3423</p>
+            </div>
+
+            <div class="card country">
+                <h3>🇺🇸 United States</h3>
+                <p>+1 202 555 0147</p>
+            </div>
+
+            <div class="card country">
+                <h3>🇬🇧 United Kingdom</h3>
+                <p>+44 20 7946 0958</p>
+            </div>
+
+            <div class="card country">
+                <h3>🇦🇪 United Arab Emirates</h3>
+                <p>+971 50 555 0182</p>
+            </div>
+        </div>
+
+        <div class="card form-card mt center">
+            <h3>Email</h3>
+            <p class="gold mt">mrizuku61@gmail.com</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-title">ROYAL CREST INTERNATIONAL AIRPORT</div>
+                <p style="color:#999;font-size:14px;max-width:500px">
+                    A premium fictional airport website created as a front-end project.
+                    Flight information, bookings, accounts and payments are demonstration features.
+                </p>
+            </div>
+
+            <div>
+                <div class="footer-title">Quick Links</div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#flights">Flights</a>
+                    <a href="#book">Book</a>
+                    <a href="#payment">Payment</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="footer-title">Contact</div>
+                <div class="footer-links">
+                    <a href="#contact">Customer Care</a>
+                    <a href="#owner">Founder</a>
+                    <a href="#login">Passenger Login</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2026 Royal Crest International Airport. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<div id="toast" class="toast"></div>
+
+<script>
+// @ts-nocheck
+/* =========================================================
+   ROYAL CREST JAVASCRIPT
+   @ts-nocheck removes Acode TypeScript-only warnings.
+   ========================================================= */
+
+"use strict";
+
+/* ---------- Helpers ---------- */
+
+function byId(id){
+    return document.getElementById(id);
+}
+
+function showToast(message){
+    const toast = byId("toast");
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    window.clearTimeout(window.royalCrestToastTimer);
+
+    window.royalCrestToastTimer = window.setTimeout(function(){
+        toast.classList.remove("show");
+    }, 3200);
+}
+
+function randomNumber(min,max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function makeFlightNumber(){
+    return "RC" + randomNumber(100,999);
+}
+
+function makeGate(){
+    const letters = ["A","B","C"];
+    return letters[randomNumber(0,letters.length - 1)] + String(randomNumber(1,20)).padStart(2,"0");
+}
+
+function makeSeat(){
+    const letters = ["A","B","C","D","E","F"];
+    return randomNumber(1,40) + letters[randomNumber(0,letters.length - 1)];
+}
+
+function makeBoardingPassNumber(){
+    return "RC-" + randomNumber(100000,999999);
+}
+
+function cityCode(city){
+    const clean = String(city || "").trim().toUpperCase();
+
+    const codes = {
+        LAGOS:"LOS",
+        LONDON:"LON",
+        DUBAI:"DXB",
+        PARIS:"PAR",
+        ABUJA:"ABV",
+        NEWYORK:"NYC",
+        "NEW YORK":"NYC",
+        ACCRA:"ACC",
+        DOHA:"DOH"
+    };
+
+    if(codes[clean]){
+        return codes[clean];
+    }
+
+    const letters = clean.replace(/[^A-Z]/g,"");
+
+    if(letters.length >= 3){
+        return letters.substring(0,3);
+    }
+
+    return (letters + "XXX").substring(0,3);
+}
+
+function formatDate(value){
+    if(!value){
+        return "--";
+    }
+
+    const date = new Date(value + "T00:00:00");
+
+    if(Number.isNaN(date.getTime())){
+        return value;
+    }
+
+    return date.toLocaleDateString(undefined,{
+        day:"2-digit",
+        month:"short",
+        year:"numeric"
+    });
+}
+
+/* ---------- Date minimums ---------- */
+
+function setDateMinimums(){
+    const now = new Date();
+
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2,"0");
+    const day = String(now.getDate()).padStart(2,"0");
+
+    const today = year + "-" + month + "-" + day;
+
+    const flightDate = byId("flightDate");
+    const travelDate = byId("travelDate");
+
+    if(flightDate){
+        flightDate.min = today;
+    }
+
+    if(travelDate){
+        travelDate.min = today;
+    }
+}
+
+
+
+
+
+/* ---------- Final dashboard sync ---------- */
+
+function getInitials(name){
+    const parts = String(name || "Royal Crest").trim().split(/\s+/);
+    if(parts.length === 1) return parts[0].substring(0,2).toUpperCase();
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+function refreshDashboard(){
+    const accountRaw = localStorage.getItem("royalCrestAccount");
+    const loggedIn = localStorage.getItem("royalCrestLoggedIn") === "true";
+    const dashboard = byId("dashboard");
+
+    if(!dashboard) return;
+
+    if(!loggedIn || !accountRaw){
+        dashboard.style.display = "none";
+        return;
+    }
+
+    let account = {};
+    try{
+        account = JSON.parse(accountRaw) || {};
+    }catch(error){
+        dashboard.style.display = "none";
+        return;
+    }
+
+    dashboard.style.display = "block";
+
+    const name = account.name || account.fullName || "Royal Passenger";
+    const email = account.email || "passenger@example.com";
+
+    byId("dashboardName").textContent = name;
+    byId("dashboardEmail").textContent = email;
+    byId("dashboardAvatar").textContent = getInitials(name);
+
+    let booking = null;
+    try{
+        booking = JSON.parse(localStorage.getItem("royalCrestBooking")) || null;
+    }catch(error){}
+
+    if(booking){
+        const from = booking.departure || booking.from || "--";
+        const to = booking.destination || booking.to || "--";
+
+        byId("dashFlight").textContent = booking.flight || "--";
+        byId("dashRoute").textContent = from + " → " + to;
+        byId("dashDate").textContent = booking.date || "--";
+        byId("dashGateSeat").textContent =
+            (booking.gate || "--") + " / " + (booking.seat || "--");
+        byId("dashPassengers").textContent = booking.passengers || "1";
+        byId("dashBoardingPass").textContent =
+            booking.boardingPass || booking.bookingReference || "--";
+    }else{
+        byId("dashFlight").textContent = "--";
+        byId("dashRoute").textContent = "-- → --";
+        byId("dashDate").textContent = "--";
+        byId("dashGateSeat").textContent = "-- / --";
+        byId("dashPassengers").textContent = "--";
+        byId("dashBoardingPass").textContent = "--";
+    }
+
+    let payment = null;
+    try{
+        payment = JSON.parse(localStorage.getItem("royalCrestPayment")) || null;
+    }catch(error){}
+
+    const paymentBox = byId("dashPaymentStatus");
+
+    if(payment){
+        paymentBox.classList.add("paid");
+        paymentBox.innerHTML =
+            '<span class="dash-status-dot"></span><strong>TRANSFER SUBMITTED</strong>';
+
+        byId("dashPaymentRef").textContent = payment.reference || "--";
+        byId("dashPaymentAmount").textContent = payment.amount || "--";
+        byId("dashPaymentMethod").textContent = payment.method || "--";
+    }else{
+        paymentBox.classList.remove("paid");
+        paymentBox.innerHTML =
+            '<span class="dash-status-dot"></span><strong>No payment submitted</strong>';
+
+        byId("dashPaymentRef").textContent = "--";
+        byId("dashPaymentAmount").textContent = "--";
+        byId("dashPaymentMethod").textContent = "--";
+    }
+}
+
+const dashboardLogoutBtn = byId("dashboardLogoutBtn");
+
+if(dashboardLogoutBtn){
+    dashboardLogoutBtn.addEventListener("click",function(){
+        localStorage.removeItem("royalCrestLoggedIn");
+        refreshDashboard();
+
+        const loginSection = byId("login");
+        if(loginSection){
+            loginSection.scrollIntoView({behavior:"smooth"});
+        }
+    });
+}
+
+window.addEventListener("storage",refreshDashboard);
+
+/* ---------- Payment center ---------- */
+
+const copyAccountBtn = byId("copyAccountBtn");
+
+if(copyAccountBtn){
+    copyAccountBtn.addEventListener("click",async function(){
+        const accountNumber = byId("paymentAccountNumber").textContent.trim();
+
+        try{
+            await navigator.clipboard.writeText(accountNumber);
+            copyAccountBtn.textContent = "COPIED";
+            setTimeout(function(){
+                copyAccountBtn.textContent = "COPY";
+            },1800);
+        }catch(error){
+            alert("Account number: " + accountNumber);
+        }
+    });
+}
+
+const paymentForm = byId("paymentForm");
+
+if(paymentForm){
+    paymentForm.addEventListener("submit",function(event){
+        event.preventDefault();
+
+        const bookingRef = byId("paymentBookingRef").value.trim();
+        const amount = byId("paymentAmount").value.trim();
+        const method = byId("paymentMethod").value;
+        const passenger = byId("paymentName").value.trim();
+
+        if(!bookingRef || !amount || !method || !passenger){
+            alert("Please complete all payment fields.");
+            return;
+        }
+
+        const paymentReference = "RC-PAY-" + Math.floor(100000 + Math.random() * 900000);
+
+        const paymentRecord = {
+            reference:paymentReference,
+            bookingReference:bookingRef,
+            amount:amount,
+            method:method,
+            passenger:passenger,
+            status:"Transfer Submitted",
+            submittedAt:new Date().toISOString()
+        };
+
+        localStorage.setItem("royalCrestPayment",JSON.stringify(paymentRecord));
+        refreshDashboard();
+
+        const status = byId("paymentStatus");
+        const receipt = byId("paymentReceipt");
+        const receiptRef = byId("paymentReceiptRef");
+        const receiptText = byId("paymentReceiptText");
+
+        status.textContent = "✓ Payment confirmation submitted successfully.";
+        status.style.display = "block";
+
+        receiptRef.textContent = paymentReference;
+        receiptText.textContent =
+            "Payment confirmation for " + passenger +
+            " has been saved. Amount: " + amount +
+            ". Method: " + method + ".";
+
+        receipt.style.display = "grid";
+
+        paymentForm.reset();
+
+        if(typeof loadBooking === "function"){
+            loadBooking();
+        }
+    });
+}
+
+function loadSavedPayment(){
+    const raw = localStorage.getItem("royalCrestPayment");
+    if(!raw) return;
+
+    try{
+        const payment = JSON.parse(raw);
+        const receipt = byId("paymentReceipt");
+        const receiptRef = byId("paymentReceiptRef");
+        const receiptText = byId("paymentReceiptText");
+
+        if(receipt && receiptRef && receiptText){
+            receiptRef.textContent = payment.reference;
+            receiptText.textContent =
+                "Payment confirmation for " + payment.passenger +
+                " was previously submitted. Amount: " + payment.amount +
+                ".";
+            receipt.style.display = "grid";
+        }
+    }catch(error){
+        console.log("Payment record could not be loaded.");
+    }
+}
+
+loadSavedPayment();
+
+/* ---------- Professional boarding pass renderer ---------- */
+
+function makeBarcode(targetId, seed){
+    const box = byId(targetId);
+    if(!box) return;
+
+    box.innerHTML = "";
+
+    const text = String(seed || "ROYALCREST");
+    for(let i=0;i<42;i++){
+        const bar = document.createElement("i");
+        const code = text.charCodeAt(i % text.length);
+        const width = 1 + ((code + i * 7) % 4);
+        bar.style.width = width + "px";
+        bar.style.opacity = (i % 5 === 0) ? "0.72" : "1";
+        box.appendChild(bar);
+    }
+}
+
+function updateProfessionalBoardingPass(booking){
+    const pass = byId("boardingPass");
+    if(!pass || !booking) return;
+
+    const from = booking.departure || booking.from || "Lagos";
+    const to = booking.destination || booking.to || "London";
+    const passenger = booking.passenger || booking.name || "Passenger";
+    const date = booking.date || "--";
+    const passengers = booking.passengers || "1";
+    const flight = booking.flight || "RC" + Math.floor(100 + Math.random()*899);
+    const gate = booking.gate || "A12";
+    const seat = booking.seat || "12A";
+    const number = booking.boardingPass || booking.bookingReference || ("RC-" + Date.now().toString().slice(-9));
+
+    const codes = {
+        Lagos:"LOS", London:"LHR", Dubai:"DXB", Paris:"CDG",
+        Abuja:"ABV", Accra:"ACC", "New York":"JFK"
+    };
+
+    byId("bpFrom").textContent = codes[from] || from.substring(0,3).toUpperCase();
+    byId("bpFromCity").textContent = from;
+    byId("bpTo").textContent = codes[to] || to.substring(0,3).toUpperCase();
+    byId("bpToCity").textContent = to;
+    byId("bpPassenger").textContent = passenger;
+    byId("bpFlight").textContent = flight;
+    byId("bpDate").textContent = date;
+    byId("bpGate").textContent = gate;
+    byId("bpPassengers").textContent = passengers;
+    byId("bpSeat").textContent = seat;
+    byId("bpNumber").textContent = number;
+
+    makeBarcode("bpBarcode", number + passenger + flight);
+    pass.style.display = "block";
+}
+
+/* ---------- Professional flight board ---------- */
+const boardTabs = document.querySelectorAll(".board-tab");
+const departureBoard = byId("departureBoard");
+const arrivalBoard = byId("arrivalBoard");
+
+boardTabs.forEach(function(tab){
+    tab.addEventListener("click",function(){
+        boardTabs.forEach(function(item){ item.classList.remove("active"); });
+        tab.classList.add("active");
+        if(tab.dataset.board === "arrivals"){
+            departureBoard.classList.add("hidden-board");
+            arrivalBoard.classList.remove("hidden-board");
+        }else{
+            arrivalBoard.classList.add("hidden-board");
+            departureBoard.classList.remove("hidden-board");
+        }
+    });
+});
+
+function updateBoardClock(){
+    const clock = byId("boardClock");
+    const updated = byId("boardUpdated");
+    if(!clock) return;
+    const now = new Date();
+    const time = now.toLocaleTimeString([],{
+        hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false
+    });
+    clock.textContent = time;
+    if(updated) updated.textContent = "Updated " + time;
+}
+updateBoardClock();
+setInterval(updateBoardClock,1000);
+
+/* ---------- Mobile navigation ---------- */
+
+const menuToggle = byId("menuToggle");
+const mainNav = byId("mainNav");
+
+if(menuToggle && mainNav){
+    menuToggle.addEventListener("click",function(){
+        const isOpen = mainNav.classList.toggle("open");
+
+        menuToggle.classList.toggle("active",isOpen);
+        menuToggle.setAttribute("aria-expanded",String(isOpen));
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+    });
+
+    mainNav.querySelectorAll("a").forEach(function(link){
+        link.addEventListener("click",function(){
+            mainNav.classList.remove("open");
+            menuToggle.classList.remove("active");
+            menuToggle.setAttribute("aria-expanded","false");
+            menuToggle.setAttribute("aria-label","Open navigation menu");
+        });
+    });
+
+    window.addEventListener("resize",function(){
+        if(window.innerWidth > 900){
+            mainNav.classList.remove("open");
+            menuToggle.classList.remove("active");
+            menuToggle.setAttribute("aria-expanded","false");
+            menuToggle.setAttribute("aria-label","Open navigation menu");
+        }
+    });
+}
+
+/* ---------- Flight search ---------- */
+
+byId("flightSearchForm").addEventListener("submit",function(event){
+    event.preventDefault();
+
+    const from = byId("fromCity").value.trim();
+    const to = byId("toCity").value.trim();
+    const date = byId("flightDate").value;
+
+    const result = byId("flightSearchResult");
+
+    result.classList.add("show");
+
+    result.innerHTML =
+        "<strong>Flight search received.</strong><br>" +
+        "Searching demo Royal Crest flights from <span class='highlight'>" +
+        escapeHtml(from) +
+        "</span> to <span class='highlight'>" +
+        escapeHtml(to) +
+        "</span> for <span class='highlight'>" +
+        escapeHtml(formatDate(date)) +
+        "</span>.<br><br>" +
+        "For this front-end demo, the sample flight schedule is shown above.";
+});
+
+/* ---------- Booking ---------- */
+
+byId("bookingForm").addEventListener("submit",function(event){
+    event.preventDefault();
+
+    const name = byId("passengerName").value.trim();
+    const email = byId("passengerEmail").value.trim();
+    const from = byId("departureCity").value.trim();
+    const to = byId("destinationCity").value.trim();
+    const date = byId("travelDate").value;
+    const passengers = byId("passengerCount").value;
+
+    if(!name || !email || !from || !to || !date || !passengers){
+        showToast("Please complete all booking fields.");
+        return;
+    }
+
+    const booking = {
+        name:name,
+        email:email,
+        from:from,
+        to:to,
+        date:date,
+        passengers:Number(passengers),
+        flight:makeFlightNumber(),
+        gate:makeGate(),
+        seat:makeSeat(),
+        boardingPassNumber:makeBoardingPassNumber(),
+        status:"Booked",
+        createdAt:new Date().toISOString()
+    };
+
+    localStorage.setItem("royalCrestBooking",JSON.stringify(booking));
+
+    displayBooking(booking);
+    updateDashboardBooking(booking);
+
+    const result = byId("bookingResult");
+
+    result.classList.add("show");
+    result.innerHTML =
+        "<strong>Booking created successfully.</strong><br>" +
+        "Your demo flight is <span class='highlight'>" +
+        escapeHtml(booking.flight) +
+        "</span>. Your boarding pass has been generated below.";
+
+    showToast("Booking created successfully.");
+
+    if(localStorage.getItem("royalCrestLoggedIn") === "true"){
+        loadBooking();
+    }
+});
+
+function displayBooking(booking){
+    byId("bpNumber").textContent = booking.boardingPassNumber;
+    byId("bpFrom").textContent = cityCode(booking.from);
+    byId("bpTo").textContent = cityCode(booking.to);
+    byId("bpPassenger").textContent = booking.name;
+    byId("bpFlight").textContent = booking.flight;
+    byId("bpDate").textContent = formatDate(booking.date);
+    byId("bpPassengers").textContent = String(booking.passengers);
+    byId("bpGate").textContent = booking.gate;
+    byId("bpSeat").textContent = booking.seat;
+
+    byId("boardingPass").classList.add("show");
+}
+
+function updateDashboardBooking(booking){
+    byId("dashFlight").textContent = booking.flight;
+    byId("dashRoute").textContent =
+        cityCode(booking.from) + " → " + cityCode(booking.to);
+    byId("dashDate").textContent = formatDate(booking.date);
+    byId("dashBookingStatus").textContent = booking.status;
+    byId("dashGate").textContent = booking.gate;
+    byId("dashSeat").textContent = booking.seat;
+    byId("dashPassengers").textContent = String(booking.passengers);
+    byId("dashBpNumber").textContent = booking.boardingPassNumber;
+}
+
+/* ---------- Authentication ---------- */
+
+byId("signupTab").addEventListener("click",function(){
+    showAuthPanel("signup");
+});
+
+byId("loginTab").addEventListener("click",function(){
+    showAuthPanel("login");
+});
+
+function showAuthPanel(type){
+    const signup = type === "signup";
+
+    byId("signupTab").classList.toggle("active",signup);
+    byId("loginTab").classList.toggle("active",!signup);
+
+    byId("signupPanel").classList.toggle("active",signup);
+    byId("loginPanel").classList.toggle("active",!signup);
+}
+
+byId("signupForm").addEventListener("submit",function(event){
+    event.preventDefault();
+
+    const name = byId("signupName").value.trim();
+    const email = byId("signupEmail").value.trim().toLowerCase();
+    const password = byId("signupPassword").value;
+    const password2 = byId("signupPassword2").value;
+
+    if(password.length < 6){
+        showToast("Password must contain at least 6 characters.");
+        return;
+    }
+
+    if(password !== password2){
+        showToast("The passwords do not match.");
+        return;
+    }
+
+    const account = {
+        name:name,
+        email:email,
+        password:password,
+        createdAt:new Date().toISOString()
+    };
+
+    localStorage.setItem("royalCrestAccount",JSON.stringify(account));
+    localStorage.setItem("royalCrestLoggedIn","true");
+
+    byId("loginEmail").value = email;
+    byId("loginPassword").value = password;
+
+    showToast("Account created. You are now logged in.");
+
+    showDashboard();
+
+    setTimeout(function(){
+        byId("dashboard").scrollIntoView({behavior:"smooth"});
+    },150);
+});
+
+byId("loginForm").addEventListener("submit",function(event){
+    event.preventDefault();
+
+    const email = byId("loginEmail").value.trim().toLowerCase();
+    const password = byId("loginPassword").value;
+
+    const saved = localStorage.getItem("royalCrestAccount");
+
+    if(!saved){
+        showToast("No account found. Please sign up first.");
+        showAuthPanel("signup");
+        return;
+    }
+
+    let account;
+
+    try{
+        account = JSON.parse(saved);
+    }catch(error){
+        showToast("Saved account data is invalid. Please sign up again.");
+        return;
+    }
+
+    if(account.email !== email || account.password !== password){
+        showToast("Incorrect email or password.");
+        return;
+    }
+
+    localStorage.setItem("royalCrestLoggedIn","true");
+
+    showToast("Login successful.");
+    showDashboard();
+
+    setTimeout(function(){
+        byId("dashboard").scrollIntoView({behavior:"smooth"});
+    },150);
+});
+
+function showDashboard(){
+    const dashboard = byId("dashboard");
+    const loggedIn = localStorage.getItem("royalCrestLoggedIn");
+
+    if(loggedIn !== "true"){
+        dashboard.classList.remove("active");
+        return;
+    }
+
+    const saved = localStorage.getItem("royalCrestAccount");
+
+    if(!saved){
+        dashboard.classList.remove("active");
+        return;
+    }
+
+    let account;
+
+    try{
+        account = JSON.parse(saved);
+    }catch(error){
+        dashboard.classList.remove("active");
+        return;
+    }
+
+    dashboard.classList.add("active");
+
+    byId("dashName").textContent = account.name || "--";
+    byId("dashEmail").textContent = account.email || "--";
+    byId("dashboardWelcome").textContent =
+        "Welcome back, " + (account.name || "Passenger") + ".";
+
+    loadBooking();
+}
+
+byId("logoutBtn").addEventListener("click",function(){
+    localStorage.removeItem("royalCrestLoggedIn");
+
+    byId("dashboard").classList.remove("active");
+
+    showToast("You have been logged out.");
+
+    byId("login").scrollIntoView({behavior:"smooth"});
+});
+
+function loadBooking(){
+    const saved = localStorage.getItem("royalCrestBooking");
+
+    if(!saved){
+        byId("dashFlight").textContent = "No booking";
+        byId("dashRoute").textContent = "--";
+        byId("dashDate").textContent = "--";
+        byId("dashBookingStatus").textContent = "--";
+        byId("dashGate").textContent = "--";
+        byId("dashSeat").textContent = "--";
+        byId("dashPassengers").textContent = "--";
+        byId("dashBpNumber").textContent = "--";
+        return;
+    }
+
+    let booking;
+
+    try{
+        booking = JSON.parse(saved);
+    }catch(error){
+        return;
+    }
+
+    updateDashboardBooking(booking);
+}
+
+/* ---------- Payment ---------- */
+
+byId("copyAccountBtn").addEventListener("click",async function(){
+    const accountNumber = byId("accountNumber").textContent.trim();
+
+    try{
+        await navigator.clipboard.writeText(accountNumber);
+        showToast("Account number copied.");
+    }catch(error){
+        showToast("Copy was blocked by the browser. Please copy 8100613507 manually.");
+    }
+});
+
+byId("paymentForm").addEventListener("submit",function(event){
+    event.preventDefault();
+
+    const bookingRef = byId("paymentBookingRef").value.trim();
+    const method = byId("paymentMethod").value;
+    const amount = byId("paymentAmount").value;
+    const payer = byId("paymentPayer").value.trim();
+
+    if(!bookingRef || !method){
+        showToast("Enter the booking reference and payment method.");
+        return;
+    }
+
+    const payment = {
+        bookingRef:bookingRef,
+        method:method,
+        amount:amount,
+        payer:payer,
+        bank:"PALMPAY",
+        accountName:"FOLASHADE AINA OGUNWO",
+        accountNumber:"8100613507",
+        status:"Transfer Submitted",
+        createdAt:new Date().toISOString()
+    };
+
+    localStorage.setItem("royalCrestPayment",JSON.stringify(payment));
+
+    const result = byId("paymentResult");
+
+    result.classList.add("show");
+    result.innerHTML =
+        "<strong>Payment confirmation submitted.</strong><br>" +
+        "Booking reference: <span class='highlight'>" +
+        escapeHtml(bookingRef) +
+        "</span><br>" +
+        "Status: <span class='highlight'>Transfer Submitted</span><br><br>" +
+        "This demo cannot verify a real bank transfer.";
+
+    showToast("Payment confirmation saved.");
+});
+
+/* ---------- Safe text helper ---------- */
+
+function escapeHtml(value){
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+/* ---------- Restore saved data ---------- */
+
+function restoreSavedBookingToPass(){
+    const saved = localStorage.getItem("royalCrestBooking");
+
+    if(!saved){
+        return;
+    }
+
+    let booking;
+
+    try{
+        booking = JSON.parse(saved);
+    }catch(error){
+        return;
+    }
+
+    if(booking && booking.flight){
+        displayBooking(booking);
+    }
+}
+
+/* ---------- Start ---------- */
+
+window.addEventListener("load",function(){
+    setDateMinimums();
+    restoreSavedBookingToPass();
+    showDashboard();
+});
+</script>
+
+
+<script>
+/* ---------- Final site initialization ---------- */
+document.addEventListener("DOMContentLoaded",function(){
+    if(typeof refreshDashboard === "function"){
+        refreshDashboard();
+    }
+});
+</script>
+
+</body>
+</html>
+
